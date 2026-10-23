@@ -1,0 +1,34 @@
+services:
+  api:
+    build: .
+    image: ${PANOPTICON_IMAGE:-panopticon:local}
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: sqlite:////data/personal_api.db
+    command: ["sh", "-c", "dbwarden migrate && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+    ports:
+      - "${PANOPTICON_PORT:-8000}:8000"
+    volumes:
+      - panopticon-data:/data
+    restart: unless-stopped
+
+  worker:
+    build: .
+    image: ${PANOPTICON_IMAGE:-panopticon:local}
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: sqlite:////data/personal_api.db
+    command: ["python", "-m", "app.cli", "worker", "--concurrency", "1"]
+    volumes:
+      - panopticon-data:/data
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  panopticon-data:

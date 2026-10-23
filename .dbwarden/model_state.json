@@ -1,0 +1,5851 @@
+{
+  "_warning": "This file records the schema that dbwarden expects the database to be in after the last migration. It is auto-generated and version-controlled. If accidentally deleted, restore from git (git checkout .dbwarden/model_state.*.json) or regenerate by running: dbwarden export-models. Without it, offline commands like make-migrations --offline will not work, but online operations are unaffected.",
+  "format_version": 2,
+  "tables": {
+    "projects": {
+      "name": "projects",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "name": {
+          "name": "name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "slug": {
+          "name": "slug",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": true,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "description": {
+          "name": "description",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "owner": {
+          "name": "owner",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "homepage": {
+          "name": "homepage",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "visibility": {
+          "name": "visibility",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'public'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "aliases": {
+          "name": "aliases",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "tags": {
+          "name": "tags",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "categories": {
+          "name": "categories",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "is_group": {
+          "name": "is_group",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "repositories": {
+      "name": "repositories",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider": {
+          "name": "provider",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'github'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider_id": {
+          "name": "provider_id",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "auth_scope": {
+          "name": "auth_scope",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'default'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "full_name": {
+          "name": "full_name",
+          "type": "VARCHAR(512)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "owner": {
+          "name": "owner",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "owner_type": {
+          "name": "owner_type",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "name": {
+          "name": "name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "description": {
+          "name": "description",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "url": {
+          "name": "url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "clone_url": {
+          "name": "clone_url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "homepage": {
+          "name": "homepage",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "visibility": {
+          "name": "visibility",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'public'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "default_branch": {
+          "name": "default_branch",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "language": {
+          "name": "language",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "languages": {
+          "name": "languages",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "topics": {
+          "name": "topics",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "license": {
+          "name": "license",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "license_spdx": {
+          "name": "license_spdx",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider_created_at": {
+          "name": "provider_created_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider_updated_at": {
+          "name": "provider_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "archived": {
+          "name": "archived",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fork": {
+          "name": "fork",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "is_template": {
+          "name": "is_template",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "upstream_full_name": {
+          "name": "upstream_full_name",
+          "type": "VARCHAR(512)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "size_kb": {
+          "name": "size_kb",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "stars": {
+          "name": "stars",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "forks": {
+          "name": "forks",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "watchers": {
+          "name": "watchers",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "open_issues": {
+          "name": "open_issues",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "contributors_count": {
+          "name": "contributors_count",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "features": {
+          "name": "features",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "raw_provider": {
+          "name": "raw_provider",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "lifecycle": {
+          "name": "lifecycle",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'active'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_seen_at": {
+          "name": "last_seen_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "repository_branches": {
+      "name": "repository_branches",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "name": {
+          "name": "name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "head_sha": {
+          "name": "head_sha",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "head_committed_at": {
+          "name": "head_committed_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "latest_commit_message": {
+          "name": "latest_commit_message",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "is_default": {
+          "name": "is_default",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "ahead": {
+          "name": "ahead",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "behind": {
+          "name": "behind",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "protected": {
+          "name": "protected",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "required_checks": {
+          "name": "required_checks",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "repository_tags": {
+      "name": "repository_tags",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "name": {
+          "name": "name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "target_sha": {
+          "name": "target_sha",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "tag_type": {
+          "name": "tag_type",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "tagger_name": {
+          "name": "tagger_name",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "tagger_email": {
+          "name": "tagger_email",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "tagger_date": {
+          "name": "tagger_date",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "release_id": {
+          "name": "release_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "releases(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "is_semver": {
+          "name": "is_semver",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "commits": {
+      "name": "commits",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "sha": {
+          "name": "sha",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "abbreviated_sha": {
+          "name": "abbreviated_sha",
+          "type": "VARCHAR(16)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "message": {
+          "name": "message",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "subject": {
+          "name": "subject",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "author_name": {
+          "name": "author_name",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "author_email": {
+          "name": "author_email",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "authored_at": {
+          "name": "authored_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "committer_name": {
+          "name": "committer_name",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "committer_email": {
+          "name": "committer_email",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "committed_at": {
+          "name": "committed_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "parents": {
+          "name": "parents",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "html_url": {
+          "name": "html_url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "verified": {
+          "name": "verified",
+          "type": "BOOLEAN",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "verification": {
+          "name": "verification",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "changed_files": {
+          "name": "changed_files",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "additions": {
+          "name": "additions",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "deletions": {
+          "name": "deletions",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "total_changes": {
+          "name": "total_changes",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "pull_request_numbers": {
+          "name": "pull_request_numbers",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "pull_requests": {
+      "name": "pull_requests",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "number": {
+          "name": "number",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "title": {
+          "name": "title",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "url": {
+          "name": "url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "author": {
+          "name": "author",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "state": {
+          "name": "state",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'open'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "is_draft": {
+          "name": "is_draft",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "merged_at": {
+          "name": "merged_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "closed_at": {
+          "name": "closed_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "merge_commit_sha": {
+          "name": "merge_commit_sha",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "base_branch": {
+          "name": "base_branch",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "head_branch": {
+          "name": "head_branch",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "head_sha": {
+          "name": "head_sha",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "review_status": {
+          "name": "review_status",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "requested_reviewers": {
+          "name": "requested_reviewers",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "labels": {
+          "name": "labels",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "linked_issues": {
+          "name": "linked_issues",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "changed_files": {
+          "name": "changed_files",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "additions": {
+          "name": "additions",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "deletions": {
+          "name": "deletions",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "checks_status": {
+          "name": "checks_status",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "milestone": {
+          "name": "milestone",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "assignees": {
+          "name": "assignees",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "issues": {
+      "name": "issues",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "number": {
+          "name": "number",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "title": {
+          "name": "title",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "url": {
+          "name": "url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "author": {
+          "name": "author",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "state": {
+          "name": "state",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'open'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "labels": {
+          "name": "labels",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "assignees": {
+          "name": "assignees",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "closed_at": {
+          "name": "closed_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "milestone": {
+          "name": "milestone",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "comments_count": {
+          "name": "comments_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "linked_pull_requests": {
+          "name": "linked_pull_requests",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "releases": {
+      "name": "releases",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider_id": {
+          "name": "provider_id",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "tag_name": {
+          "name": "tag_name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "title": {
+          "name": "title",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "url": {
+          "name": "url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "draft": {
+          "name": "draft",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "prerelease": {
+          "name": "prerelease",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "notes": {
+          "name": "notes",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "target_sha": {
+          "name": "target_sha",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "assets": {
+          "name": "assets",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "packages": {
+      "name": "packages",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "project_id": {
+          "name": "project_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "projects(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "registry": {
+          "name": "registry",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "ecosystem": {
+          "name": "ecosystem",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "name": {
+          "name": "name",
+          "type": "VARCHAR(512)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "url": {
+          "name": "url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "latest_version": {
+          "name": "latest_version",
+          "type": "VARCHAR(128)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "latest_stable_version": {
+          "name": "latest_stable_version",
+          "type": "VARCHAR(128)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "description": {
+          "name": "description",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "license": {
+          "name": "license",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "maintainers": {
+          "name": "maintainers",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "downloads": {
+          "name": "downloads",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "downloads_period": {
+          "name": "downloads_period",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "deprecated": {
+          "name": "deprecated",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "yanked": {
+          "name": "yanked",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "package_type": {
+          "name": "package_type",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "package_versions": {
+      "name": "package_versions",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "package_id": {
+          "name": "package_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "packages(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "version": {
+          "name": "version",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "yanked": {
+          "name": "yanked",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "deprecated": {
+          "name": "deprecated",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "is_prerelease": {
+          "name": "is_prerelease",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "FALSE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "workflow_runs": {
+      "name": "workflow_runs",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider_id": {
+          "name": "provider_id",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "workflow_name": {
+          "name": "workflow_name",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "workflow_id": {
+          "name": "workflow_id",
+          "type": "VARCHAR(128)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "run_number": {
+          "name": "run_number",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "status": {
+          "name": "status",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "conclusion": {
+          "name": "conclusion",
+          "type": "VARCHAR(32)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "branch": {
+          "name": "branch",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "head_sha": {
+          "name": "head_sha",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "event": {
+          "name": "event",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "started_at": {
+          "name": "started_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "duration_seconds": {
+          "name": "duration_seconds",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "html_url": {
+          "name": "html_url",
+          "type": "VARCHAR(1024)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "failed_jobs": {
+          "name": "failed_jobs",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "refresh_status": {
+          "name": "refresh_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "observations": {
+      "name": "observations",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "package_id": {
+          "name": "package_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "packages(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "value": {
+          "name": "value",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source": {
+          "name": "source",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'provider'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "observed_at": {
+          "name": "observed_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "provider_cache": {
+      "name": "provider_cache",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider": {
+          "name": "provider",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "resource": {
+          "name": "resource",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "scope": {
+          "name": "scope",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'default'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "cache_key": {
+          "name": "cache_key",
+          "type": "VARCHAR(512)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "etag": {
+          "name": "etag",
+          "type": "VARCHAR(512)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_modified": {
+          "name": "last_modified",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "payload": {
+          "name": "payload",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "status": {
+          "name": "status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'never_fetched'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "error": {
+          "name": "error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_successful_fetch_at": {
+          "name": "last_successful_fetch_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_attempt_at": {
+          "name": "last_attempt_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "next_refresh_at": {
+          "name": "next_refresh_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "source_updated_at": {
+          "name": "source_updated_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "hits": {
+          "name": "hits",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "misses": {
+          "name": "misses",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "sync_jobs": {
+      "name": "sync_jobs",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "project_id": {
+          "name": "project_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "projects(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "scope": {
+          "name": "scope",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "priority": {
+          "name": "priority",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "50",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "status": {
+          "name": "status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'queued'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "attempts": {
+          "name": "attempts",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "0",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "max_attempts": {
+          "name": "max_attempts",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "5",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "error": {
+          "name": "error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "payload": {
+          "name": "payload",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "started_at": {
+          "name": "started_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "finished_at": {
+          "name": "finished_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "next_run_at": {
+          "name": "next_run_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "webhook_deliveries": {
+      "name": "webhook_deliveries",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "delivery_id": {
+          "name": "delivery_id",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": true,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "event": {
+          "name": "event",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "action": {
+          "name": "action",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "status": {
+          "name": "status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "'received'",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "received_at": {
+          "name": "received_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "processed_at": {
+          "name": "processed_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "error": {
+          "name": "error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "payload_hash": {
+          "name": "payload_hash",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "payload": {
+          "name": "payload",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "integrations": {
+      "name": "integrations",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider": {
+          "name": "provider",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": true,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "name": {
+          "name": "name",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "enabled": {
+          "name": "enabled",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": "TRUE",
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Bool"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "config": {
+          "name": "config",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "JSON"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "credential_ref": {
+          "name": "credential_ref",
+          "type": "VARCHAR(128)",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "provider_state": {
+      "name": "provider_state",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "provider": {
+          "name": "provider",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "family": {
+          "name": "family",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "limit": {
+          "name": "limit",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "remaining": {
+          "name": "remaining",
+          "type": "INTEGER",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "reset_at": {
+          "name": "reset_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "DateTime64(3)"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "last_error": {
+          "name": "last_error",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "unique": null,
+          "default": null,
+          "foreign_key": null,
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "String"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    },
+    "project_repositories": {
+      "name": "project_repositories",
+      "columns": {
+        "project_id": {
+          "name": "project_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": "projects(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        },
+        "repository_id": {
+          "name": "repository_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": true,
+          "unique": null,
+          "default": null,
+          "foreign_key": "repositories(id)",
+          "comment": null,
+          "autoincrement": "auto",
+          "pg_column": {},
+          "ch_column": {
+            "ch_type": "Int32"
+          },
+          "my_column": {},
+          "sq_column": {}
+        }
+      },
+      "comment": null,
+      "object_type": "table",
+      "backend": null,
+      "backend_table_spec": {},
+      "schema": null
+    }
+  },
+  "indexes": {},
+  "constraints": {
+    "projects:unique:uq_projects_slug": {
+      "type": "unique",
+      "table": "projects",
+      "name": "uq_projects_slug",
+      "columns": [
+        "slug"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "repositories:unique:uq_repository_provider_id": {
+      "type": "unique",
+      "table": "repositories",
+      "name": "uq_repository_provider_id",
+      "columns": [
+        "provider",
+        "provider_id"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "repositories:unique:uq_repository_full_name": {
+      "type": "unique",
+      "table": "repositories",
+      "name": "uq_repository_full_name",
+      "columns": [
+        "provider",
+        "full_name"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "repository_branches:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "repository_branches",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "repository_branches:unique:uq_branch_repo_name": {
+      "type": "unique",
+      "table": "repository_branches",
+      "name": "uq_branch_repo_name",
+      "columns": [
+        "repository_id",
+        "name"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "repository_tags:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "repository_tags",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "repository_tags:foreign_key:1": {
+      "type": "foreign_key",
+      "table": "repository_tags",
+      "columns": [
+        "release_id"
+      ],
+      "referenced_table": "releases",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "SET NULL",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "repository_tags:unique:uq_tag_repo_name": {
+      "type": "unique",
+      "table": "repository_tags",
+      "name": "uq_tag_repo_name",
+      "columns": [
+        "repository_id",
+        "name"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "commits:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "commits",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "commits:unique:uq_commit_repo_sha": {
+      "type": "unique",
+      "table": "commits",
+      "name": "uq_commit_repo_sha",
+      "columns": [
+        "repository_id",
+        "sha"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "pull_requests:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "pull_requests",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "pull_requests:unique:uq_pr_repo_number": {
+      "type": "unique",
+      "table": "pull_requests",
+      "name": "uq_pr_repo_number",
+      "columns": [
+        "repository_id",
+        "number"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "issues:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "issues",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "issues:unique:uq_issue_repo_number": {
+      "type": "unique",
+      "table": "issues",
+      "name": "uq_issue_repo_number",
+      "columns": [
+        "repository_id",
+        "number"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "releases:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "releases",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "releases:unique:uq_release_repo_provider": {
+      "type": "unique",
+      "table": "releases",
+      "name": "uq_release_repo_provider",
+      "columns": [
+        "repository_id",
+        "provider_id"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "packages:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "packages",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "SET NULL",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "packages:foreign_key:1": {
+      "type": "foreign_key",
+      "table": "packages",
+      "columns": [
+        "project_id"
+      ],
+      "referenced_table": "projects",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "SET NULL",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "packages:unique:uq_package_registry_name": {
+      "type": "unique",
+      "table": "packages",
+      "name": "uq_package_registry_name",
+      "columns": [
+        "registry",
+        "name"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "package_versions:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "package_versions",
+      "columns": [
+        "package_id"
+      ],
+      "referenced_table": "packages",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "package_versions:unique:uq_version_package_version": {
+      "type": "unique",
+      "table": "package_versions",
+      "name": "uq_version_package_version",
+      "columns": [
+        "package_id",
+        "version"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "workflow_runs:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "workflow_runs",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "workflow_runs:unique:uq_workflow_repo_provider": {
+      "type": "unique",
+      "table": "workflow_runs",
+      "name": "uq_workflow_repo_provider",
+      "columns": [
+        "repository_id",
+        "provider_id"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "observations:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "observations",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "observations:foreign_key:1": {
+      "type": "foreign_key",
+      "table": "observations",
+      "columns": [
+        "package_id"
+      ],
+      "referenced_table": "packages",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "provider_cache:unique:uq_provider_cache_key": {
+      "type": "unique",
+      "table": "provider_cache",
+      "name": "uq_provider_cache_key",
+      "columns": [
+        "cache_key"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "sync_jobs:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "sync_jobs",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "sync_jobs:foreign_key:1": {
+      "type": "foreign_key",
+      "table": "sync_jobs",
+      "columns": [
+        "project_id"
+      ],
+      "referenced_table": "projects",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "webhook_deliveries:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "webhook_deliveries",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "SET NULL",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "webhook_deliveries:unique:uq_webhook_deliveries_delivery_id": {
+      "type": "unique",
+      "table": "webhook_deliveries",
+      "name": "uq_webhook_deliveries_delivery_id",
+      "columns": [
+        "delivery_id"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "integrations:unique:uq_integrations_provider": {
+      "type": "unique",
+      "table": "integrations",
+      "name": "uq_integrations_provider",
+      "columns": [
+        "provider"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "provider_state:unique:uq_provider_state_family": {
+      "type": "unique",
+      "table": "provider_state",
+      "name": "uq_provider_state_family",
+      "columns": [
+        "provider",
+        "family"
+      ],
+      "deferrable": false,
+      "initially_deferred": false
+    },
+    "project_repositories:foreign_key:0": {
+      "type": "foreign_key",
+      "table": "project_repositories",
+      "columns": [
+        "project_id"
+      ],
+      "referenced_table": "projects",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    },
+    "project_repositories:foreign_key:1": {
+      "type": "foreign_key",
+      "table": "project_repositories",
+      "columns": [
+        "repository_id"
+      ],
+      "referenced_table": "repositories",
+      "referenced_columns": [
+        "id"
+      ],
+      "on_delete": "CASCADE",
+      "on_update": "NO ACTION",
+      "deferrable": false
+    }
+  },
+  "enums": {},
+  "database": "primary"
+}
