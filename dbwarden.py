@@ -1,8 +1,8 @@
 """dbwarden schema configuration.
 
 The SQLAlchemy models in :mod:`app.models` are the schema contract. dbwarden
-compiles versioned SQL migrations and rollbacks from them; there are no
-hand-written Alembic revisions.
+compiles versioned SQL migrations and rollbacks from them, so migration files
+are generated and reviewable rather than hand-written.
 """
 from __future__ import annotations
 

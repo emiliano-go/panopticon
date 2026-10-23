@@ -3,7 +3,6 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +21,7 @@ class Settings(BaseSettings):
     github_token: str = ""
     github_api_url: str = "https://api.github.com"
     github_graphql_url: str = "https://api.github.com/graphql"
-    github_orgs: list[str] = []
+    github_orgs: str = ""
     github_username: str = ""
     github_webhook_secret: str = ""
     github_timeout: float = 20.0
@@ -38,12 +37,9 @@ class Settings(BaseSettings):
 
     frontend_dir: Path = BASE_DIR / "web"
 
-    @field_validator("github_orgs", mode="before")
-    @classmethod
-    def split_orgs(cls, value: object) -> object:
-        if isinstance(value, str):
-            return [item.strip() for item in value.split(",") if item.strip()]
-        return value
+    @property
+    def github_orgs_list(self) -> list[str]:
+        return [item.strip() for item in self.github_orgs.split(",") if item.strip()]
 
     @property
     def auth_required(self) -> bool:

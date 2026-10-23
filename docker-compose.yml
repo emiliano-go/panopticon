@@ -1,34 +1,81 @@
+name: panopticon
+
 services:
   api:
-    build: .
-    image: ${PANOPTICON_IMAGE:-panopticon:local}
-    env_file:
-      - path: .env
-        required: false
+    image: ${PANOPTICON_IMAGE:-ghcr.io/emiliano-go/panopticon:latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
     environment:
-      DATABASE_URL: sqlite:////data/personal_api.db
-    command: ["sh", "-c", "dbwarden migrate && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+      DATABASE_URL: sqlite:////data/panopticon.db
+      API_AUTH_TOKEN: ${API_AUTH_TOKEN:?Set API_AUTH_TOKEN in .env}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      GITHUB_USERNAME: ${GITHUB_USERNAME:-}
+      GITHUB_ORGS: ${GITHUB_ORGS:-}
+      GITHUB_WEBHOOK_SECRET: ${GITHUB_WEBHOOK_SECRET:-}
+      ALLOW_ARBITRARY_REMOTES: ${ALLOW_ARBITRARY_REMOTES:-false}
+      AUTO_CREATE_TABLES: "false"
+    command:
+      - sh
+      - -c
+      - dbwarden migrate && exec uvicorn app.main:app --host 0.0.0.0 --port 8000
     ports:
       - "${PANOPTICON_PORT:-8000}:8000"
     volumes:
       - panopticon-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8000/healthz || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
     restart: unless-stopped
+    stop_grace_period: 20s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   worker:
-    build: .
-    image: ${PANOPTICON_IMAGE:-panopticon:local}
-    env_file:
-      - path: .env
-        required: false
+    image: ${PANOPTICON_IMAGE:-ghcr.io/emiliano-go/panopticon:latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
     environment:
-      DATABASE_URL: sqlite:////data/personal_api.db
+      DATABASE_URL: sqlite:////data/panopticon.db
+      API_AUTH_TOKEN: ${API_AUTH_TOKEN:?Set API_AUTH_TOKEN in .env}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      GITHUB_USERNAME: ${GITHUB_USERNAME:-}
+      GITHUB_ORGS: ${GITHUB_ORGS:-}
+      GITHUB_WEBHOOK_SECRET: ${GITHUB_WEBHOOK_SECRET:-}
+      AUTO_CREATE_TABLES: "false"
     command: ["python", "-m", "app.cli", "worker", "--concurrency", "1"]
     volumes:
       - panopticon-data:/data
     depends_on:
       api:
         condition: service_healthy
+    healthcheck:
+      disable: true
     restart: unless-stopped
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   panopticon-data:
+    name: panopticon-data

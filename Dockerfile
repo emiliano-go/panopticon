@@ -16,6 +16,7 @@ COPY app ./app
 COPY web ./web
 COPY dbwarden.py ./
 COPY migrations ./migrations
+COPY .dbwarden ./.dbwarden
 
 RUN pip install . \
     && groupadd --system app \

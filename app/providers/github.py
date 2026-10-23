@@ -116,7 +116,7 @@ class GitHubProvider(ProviderAdapter):
         else:
             repos = []
         seen = {item.get("id") for item in repos}
-        for org in self.settings.github_orgs:
+        for org in self.settings.github_orgs_list:
             if self.settings.github_token:
                 url = self._url(f"orgs/{org}/repos")
                 params = {"per_page": 100}
