@@ -210,6 +210,13 @@ Responses are bounded and paginated and include provider links. Remote transport
 
 Restart opencode after editing its config. `uv run --directory` starts from the project root so the MCP process reads its `.env` for `GITHUB_TOKEN` and webhook settings; `DATABASE_URL` pins it to the same index.
 
+The MCP server only reads the index, so it needs no token. `discover` and `worker` do. To reuse the machine's `gh` login instead of a PAT, inject it into those processes:
+
+```bash
+GITHUB_TOKEN=$(gh auth token) python -m app.cli discover
+GITHUB_TOKEN=$(gh auth token) python -m app.cli worker
+```
+
 ## Schema changes with dbwarden
 
 `app/models.py` is the schema contract:
