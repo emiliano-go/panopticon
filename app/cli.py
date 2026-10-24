@@ -23,7 +23,7 @@ def _db() -> Database:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="project-index")
+    parser = argparse.ArgumentParser(prog="panopticon")
     sub = parser.add_subparsers(dest="command", required=True)
 
     sub.add_parser("init-db", help="Create database tables")

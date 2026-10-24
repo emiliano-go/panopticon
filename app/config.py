@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
-    app_name: str = "Personal Project Index"
+    app_name: str = "Panopticon"
     environment: str = "development"
     database_url: str = f"sqlite:///{BASE_DIR / 'data' / 'personal_api.db'}"
     auto_create_tables: bool = True
@@ -30,7 +30,7 @@ class Settings(BaseSettings):
 
     cache_default_ttl: int = 3600
     cache_stale_ttl: int = 60 * 60 * 24 * 7
-    user_agent: str = "personal-project-index/1.0"
+    user_agent: str = "panopticon/1.0"
 
     worker_poll_seconds: float = 2.0
     worker_max_attempts: int = 5

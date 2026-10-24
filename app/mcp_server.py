@@ -9,6 +9,7 @@ from app.api import ci, collaboration, history, releases, repositories
 from app.api import refresh as refresh_api
 from app.config import get_settings
 from app.db import Database
+from app.errors import APIError
 from app.schemas import RefreshRequest
 from app.serializers import project_detail, repository_detail, repository_summary
 from app.services import queries
@@ -29,6 +30,12 @@ def _open():
     return db.session()
 
 
+def _error(exc: Exception) -> dict[str, Any]:
+    if isinstance(exc, APIError):
+        return {"error": exc.code, "message": exc.message, "details": exc.details}
+    return {"error": "provider_unavailable", "message": str(exc)}
+
+
 @server.tool()
 def list_projects(
     page: int = 1, per_page: int = 20, owner: str | None = None, language: str | None = None
@@ -37,6 +44,36 @@ def list_projects(
     with _open() as session:
         result = queries.list_projects(
             session, page=page, per_page=min(per_page, 100), owner=owner, language=language
+        )
+        session.commit()
+        return result
+
+
+@server.tool()
+def list_repositories(
+    page: int = 1,
+    per_page: int = 20,
+    owner: str | None = None,
+    provider: str | None = None,
+    language: str | None = None,
+    topic: str | None = None,
+    visibility: str | None = None,
+    archived: bool | None = None,
+    lifecycle: str | None = None,
+) -> dict[str, Any]:
+    """List indexed repositories across all projects with filters."""
+    with _open() as session:
+        result = queries.list_repositories(
+            session,
+            page=page,
+            per_page=min(per_page, 100),
+            owner=owner,
+            provider=provider,
+            language=language,
+            topic=topic,
+            visibility=visibility,
+            archived=archived,
+            lifecycle=lifecycle,
         )
         session.commit()
         return result
@@ -165,6 +202,66 @@ def list_tags(identifier: str, live: bool = False) -> dict[str, Any]:
 
 
 @server.tool()
+def get_branch(identifier: str, branch: str) -> dict[str, Any]:
+    """Branch head details, with protection metadata when available."""
+    with _open() as session:
+        try:
+            result = repositories.get_branch(
+                identifier, branch, session=session, settings=settings
+            )
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_tag(identifier: str, tag_name: str) -> dict[str, Any]:
+    """Tag details, including annotated tag metadata on first read."""
+    with _open() as session:
+        try:
+            result = repositories.get_tag(
+                identifier, tag_name, session=session, settings=settings
+            )
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_branch_commits(
+    identifier: str,
+    branch: str,
+    page: int = 1,
+    per_page: int = 30,
+    author: str | None = None,
+    since: str | None = None,
+    until: str | None = None,
+    path: str | None = None,
+) -> dict[str, Any]:
+    """Commit history for one branch, with author, date and path filters."""
+    with _open() as session:
+        try:
+            result = history.branch_commits(
+                identifier,
+                branch,
+                page=page,
+                per_page=min(per_page, 100),
+                author=author,
+                since=_dt(since),
+                until=_dt(until),
+                path=path,
+                session=session,
+                settings=settings,
+            )
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
 def list_pull_requests(
     identifier: str, state: str | None = None, page: int = 1, per_page: int = 20
 ) -> dict[str, Any]:
@@ -216,6 +313,26 @@ def list_issues(
 
 
 @server.tool()
+def get_issue(
+    identifier: str, number: int, include_comments: bool = False
+) -> dict[str, Any]:
+    """Issue details, optionally with comments."""
+    with _open() as session:
+        try:
+            result = collaboration.get_issue(
+                identifier,
+                number,
+                include_comments=include_comments,
+                session=session,
+                settings=settings,
+            )
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
 def list_releases(identifier: str, page: int = 1, per_page: int = 20) -> dict[str, Any]:
     """List indexed releases without notes by default."""
     with _open() as session:
@@ -226,6 +343,26 @@ def list_releases(identifier: str, page: int = 1, per_page: int = 20) -> dict[st
             session=session,
             settings=settings,
         )
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_release(
+    identifier: str, release_id: str, include_notes: bool = False
+) -> dict[str, Any]:
+    """One release by internal id or provider id; notes fetched on demand."""
+    with _open() as session:
+        try:
+            result = releases.get_release(
+                identifier,
+                release_id,
+                include_notes=include_notes,
+                session=session,
+                settings=settings,
+            )
+        except Exception as exc:
+            return _error(exc)
         session.commit()
         return result
 
@@ -257,6 +394,30 @@ def list_packages(
 
 
 @server.tool()
+def list_repository_packages(identifier: str) -> dict[str, Any]:
+    """Packages registered against one repository."""
+    with _open() as session:
+        try:
+            result = repositories.list_repository_packages(identifier, session=session)
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_package(package_id: int) -> dict[str, Any]:
+    """Package details across a registry, including its repository."""
+    with _open() as session:
+        try:
+            result = releases.get_package(package_id, session=session)
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
 def get_package_versions(package_id: int, page: int = 1, per_page: int = 50) -> dict[str, Any]:
     """Paginated package release history."""
     with _open() as session:
@@ -275,6 +436,92 @@ def get_workflow_status(identifier: str) -> dict[str, Any]:
         if repo is None:
             return {"error": "not_found", "identifier": identifier}
         result = queries.workflow_status(session, repo)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_workflows(identifier: str, live: bool = False) -> dict[str, Any]:
+    """Workflow names with latest run, run counts and failures."""
+    with _open() as session:
+        try:
+            result = ci.list_workflows(identifier, live=live, session=session, settings=settings)
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_workflow_runs(
+    identifier: str,
+    branch: str | None = None,
+    status: str | None = None,
+    conclusion: str | None = None,
+    page: int = 1,
+    per_page: int = 30,
+    live: bool = False,
+) -> dict[str, Any]:
+    """Paginated CI runs with branch/status/conclusion filters and a summary."""
+    with _open() as session:
+        try:
+            result = ci.list_workflow_runs(
+                identifier,
+                branch=branch,
+                status=status,
+                conclusion=conclusion,
+                page=page,
+                per_page=min(per_page, 100),
+                live=live,
+                session=session,
+                settings=settings,
+            )
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_workflow_run_logs(
+    identifier: str, run_id: int, max_bytes: int = 200_000
+) -> dict[str, Any]:
+    """Bounded CI run log text; source files are never included."""
+    with _open() as session:
+        try:
+            result = ci.workflow_run_logs(
+                identifier,
+                run_id,
+                max_bytes=min(max(max_bytes, 1_000), 1_000_000),
+                session=session,
+                settings=settings,
+            )
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_security(identifier: str) -> dict[str, Any]:
+    """Dependabot alerts, advisories and dependency summary for a repository."""
+    with _open() as session:
+        try:
+            result = ci.security(identifier, session=session, settings=settings)
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_dependencies(identifier: str) -> dict[str, Any]:
+    """Provider-reported dependency graph summary; no manifests are downloaded."""
+    with _open() as session:
+        try:
+            result = ci.dependencies(identifier, session=session, settings=settings)
+        except Exception as exc:
+            return _error(exc)
         session.commit()
         return result
 
@@ -314,6 +561,28 @@ def get_project_summary(identifier: str) -> dict[str, Any]:
 
 
 @server.tool()
+def get_portfolio_summary() -> dict[str, Any]:
+    """Cross-project counts, health, latest commits, releases and CI state."""
+    with _open() as session:
+        result = queries.portfolio_summary(session)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_recent_activity(limit: int = 10) -> dict[str, Any]:
+    """Recent releases, pull requests and packages across the portfolio."""
+    with _open() as session:
+        result = {
+            "releases": queries.recent_releases(session, limit=min(limit, 50)),
+            "pull_requests": queries.recent_pull_requests(session, limit=min(limit, 50)),
+            "packages": queries.recent_packages(session, limit=min(limit, 50)),
+        }
+        session.commit()
+        return result
+
+
+@server.tool()
 def search_projects(query: str, limit: int = 20) -> dict[str, Any]:
     """Search projects by name, slug or description."""
     with _open() as session:
@@ -338,6 +607,47 @@ def get_refresh_status(identifier: str) -> dict[str, Any]:
     """Freshness, lifecycle and recent jobs for a repository."""
     with _open() as session:
         result = repositories.refresh_status(identifier, session=session)
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_job(job_id: int) -> dict[str, Any]:
+    """Status and outcome of one queued or completed refresh job."""
+    with _open() as session:
+        try:
+            result = refresh_api.get_job(job_id, session=session)
+        except Exception as exc:
+            return _error(exc)
+        session.commit()
+        return result
+
+
+@server.tool()
+def list_jobs(
+    status: str | None = None,
+    repository_id: int | None = None,
+    page: int = 1,
+    per_page: int = 50,
+) -> dict[str, Any]:
+    """List refresh jobs with status and repository filters."""
+    with _open() as session:
+        result = refresh_api.list_jobs(
+            status=status,
+            repository_id=repository_id,
+            page=page,
+            per_page=min(per_page, 100),
+            session=session,
+        )
+        session.commit()
+        return result
+
+
+@server.tool()
+def get_provider_status() -> dict[str, Any]:
+    """Provider rate limits, cache, job queue and webhook freshness."""
+    with _open() as session:
+        result = refresh_api.provider_status(session=session)
         session.commit()
         return result
 

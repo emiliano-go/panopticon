@@ -1,5 +1,9 @@
 # Panopticon
 
+[![CI](https://github.com/emiliano-go/panopticon/actions/workflows/container.yml/badge.svg)](https://github.com/emiliano-go/panopticon/actions/workflows/container.yml)
+[![Container](https://img.shields.io/badge/ghcr.io-panopticon-blue?logo=docker)](https://github.com/emiliano-go/panopticon/pkgs/container/panopticon)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)](https://github.com/emiliano-go/panopticon)
+
 **One read-only index for every repository you own or maintain.** Panopticon aggregates GitHub repository metadata, Git history, pull requests, issues, releases, package registries and CI status into a single self-hosted API, MCP server and dashboard, without cloning a single repository or downloading source files.
 
 ## What is Panopticon?
@@ -54,6 +58,17 @@ GitHub webhooks ─────┘         │
 - **`sync_jobs`** is a persistent, priority refresh queue. Webhooks enqueue incremental scopes; scheduled reconciliation recovers missed events.
 - **Adaptive rate limits** come from live provider headers: shared request queue, per-endpoint circuit breaking, reset-aware backoff, duplicate-request coalescing and stale-cache fallback during outages.
 - **No source persistence.** Patches, diffs, file contents and full workflow logs are stripped before they reach the database.
+
+## Project layout
+
+| Path | Contents |
+|---|---|
+| `app/` | FastAPI app, provider adapters, services, MCP server and worker |
+| `web/` | Static dashboard |
+| `migrations/` | Committed SQL migrations |
+| `tests/` | Pytest suite |
+| `dbwarden.py` | Migration configuration |
+| `Dockerfile`, `docker-compose.yml` | Container build and runtime |
 
 ## Quick start with Docker
 
@@ -178,7 +193,7 @@ python -m app.cli mcp --transport streamable-http \
   --host 127.0.0.1 --port 8001                         # behind an authenticated TLS proxy
 ```
 
-Tools: `list_projects`, `get_project`, `get_repository`, `get_repository_stats`, `get_latest_commits`, `get_git_log`, `get_commit`, `compare_commits`, `list_branches`, `list_tags`, `list_pull_requests`, `get_pull_request`, `list_issues`, `list_releases`, `get_latest_release`, `list_packages`, `get_package_versions`, `get_workflow_status`, `get_repository_activity`, `get_project_summary`, `search_projects`, `request_refresh`, `get_refresh_status`.
+Tools: `list_projects`, `get_project`, `get_project_summary`, `search_projects`, `list_repositories`, `get_repository`, `get_repository_stats`, `get_repository_activity`, `get_portfolio_summary`, `get_recent_activity`, `get_latest_commits`, `get_git_log`, `get_commit`, `compare_commits`, `list_branches`, `get_branch`, `get_branch_commits`, `list_tags`, `get_tag`, `list_pull_requests`, `get_pull_request`, `list_issues`, `get_issue`, `list_releases`, `get_release`, `get_latest_release`, `list_packages`, `list_repository_packages`, `get_package`, `get_package_versions`, `get_workflow_status`, `get_workflows`, `get_workflow_runs`, `get_workflow_run_logs`, `get_security`, `get_dependencies`, `request_refresh`, `get_refresh_status`, `get_job`, `list_jobs`, `get_provider_status`.
 
 Responses are bounded and paginated and include provider links. Remote transports must sit behind authentication and TLS; stdio is the default.
 

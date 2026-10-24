@@ -15,7 +15,7 @@ from app.providers.github import GitHubProvider
 from app.serializers import commit_data
 from app.services import queries
 from app.services.sync import _upsert_commit, sync_commit_detail
-from app.utils import parse_dt, utcnow
+from app.utils import iso, parse_dt, utcnow
 
 router = APIRouter(tags=["history"])
 
@@ -92,7 +92,7 @@ def _provider_commits(
                 },
                 "parents": [p.get("sha") for p in raw.get("parents") or []],
                 "url": raw.get("html_url"),
-                "freshness": {"is_stale": False, "refresh_status": "current", "fetched_at": utcnow().isoformat() + "Z"},
+                "freshness": {"is_stale": False, "refresh_status": "current", "fetched_at": iso(utcnow())},
             }
             for raw in raw_items
         ]
