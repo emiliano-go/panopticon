@@ -1,8 +1,8 @@
 # Panopticon
 
-**One read-only index for every repository you own or maintain.** Panopticon aggregates GitHub repository metadata, Git history, pull requests, issues, releases, package registries and CI status into a single self-hosted API, MCP server and dashboard — without cloning a single repository or downloading source files.
+**One read-only index for every repository you own or maintain.** Panopticon aggregates GitHub repository metadata, Git history, pull requests, issues, releases, package registries and CI status into a single self-hosted API, MCP server and dashboard, without cloning a single repository or downloading source files.
 
-## What's Panopticon?
+## What is Panopticon?
 
 Panopticon answers questions like:
 
@@ -69,9 +69,9 @@ Open <http://localhost:8000>, click **Unlock**, and paste `API_AUTH_TOKEN`.
 
 What Compose starts:
 
-- `api` — runs `dbwarden migrate` then Uvicorn, with a health check.
-- `worker` — processes refresh jobs and periodic reconciliation, waiting for the API to become healthy.
-- `panopticon-data` — named volume containing `panopticon.db`.
+- `api`: runs `dbwarden migrate` then Uvicorn, with a health check.
+- `worker`: processes refresh jobs and periodic reconciliation, waiting for the API to become healthy.
+- `panopticon-data`: named volume containing `panopticon.db`.
 
 Useful commands:
 
@@ -190,12 +190,15 @@ Responses are bounded and paginated and include provider links. Remote transport
     "panopticon": {
       "type": "local",
       "command": [
-        "/absolute/path/to/panopticon/.venv/bin/python",
+        "uv",
+        "run",
+        "--directory",
+        "/absolute/path/to/panopticon",
+        "python",
         "-m",
         "app.cli",
         "mcp"
       ],
-      "cwd": "/absolute/path/to/panopticon",
       "environment": {
         "DATABASE_URL": "sqlite:////absolute/path/to/panopticon/data/personal_api.db"
       },
@@ -205,7 +208,7 @@ Responses are bounded and paginated and include provider links. Remote transport
 }
 ```
 
-Restart opencode after editing its config. `cwd` lets the MCP process read the project's `.env` for `GITHUB_TOKEN` and webhook settings; `DATABASE_URL` pins it to the same index.
+Restart opencode after editing its config. `uv run --directory` starts from the project root so the MCP process reads its `.env` for `GITHUB_TOKEN` and webhook settings; `DATABASE_URL` pins it to the same index.
 
 ## Schema changes with dbwarden
 
